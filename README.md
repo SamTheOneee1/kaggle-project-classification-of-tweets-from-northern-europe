@@ -119,7 +119,7 @@ pip install -r requirements.txt
 ## 👥 Contributors
 
 - **Yuesong Huang** (yhu116@u.rochester.edu)
-- **Junhua Huang**
+- **Junhua Huang** (jhuang77@u.rochester.edu)
 
 ---
 
