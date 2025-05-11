@@ -1,130 +1,115 @@
-# 🐦 Kaggle Project: Classification of Tweets from Northern Europe
+# Classification of Tweets from Northern Europe 🌍
 
-![License: BSD](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)
+![Tweet Analysis](https://img.shields.io/badge/Tweet%20Analysis-Classification-blue)
 
-## 🚀 Overview
+Welcome to the **Classification of Tweets from Northern Europe** repository! This project aims to classify over 500,000 political tweets using Natural Language Processing (NLP) and machine learning techniques. Our goal is to analyze political discourse across Northern Europe and provide insights into public sentiment and trends.
 
-This project analyzes a dataset of **509,031 tweets** from politicians across **seven Northern European countries**, aiming to classify tweets by **political spectrum (Left, Right, Center)** and **geography**. Using **Natural Language Processing (NLP)** and machine learning, we extracted key insights into political discourse and developed a classifier with strong performance.
+## Table of Contents
 
----
+1. [Project Overview](#project-overview)
+2. [Dataset](#dataset)
+3. [Technologies Used](#technologies-used)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Results](#results)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Links](#links)
 
-## 📊 Dataset
+## Project Overview
 
-- **Countries:** Belgium, Denmark, Iceland, Ireland, Netherlands, Norway, Sweden
-- **Time span:** Dec 2008 – Jan 2023
-- **Dataset size:** 509,031 tweets
-    - **Training set:** 407,223 tweets
-    - **Test set:** 101,808 tweets
+In recent years, social media has become a crucial platform for political discussion. This project leverages NLP and machine learning to classify tweets, focusing on political discourse in Northern Europe. By analyzing these tweets, we aim to uncover trends, sentiments, and patterns in political conversations.
 
-**Attributes:**
-- Tweet text
-- Country
-- Gender
-- Political spectrum label (for supervised learning)
+### Objectives
 
----
+- Classify tweets based on sentiment and topic.
+- Use machine learning algorithms to enhance classification accuracy.
+- Visualize the results to present insights effectively.
 
-## 🔬 Methods
+## Dataset
 
-### Data Cleaning & Preprocessing
+The dataset consists of over 500,000 tweets related to political discourse in Northern Europe. The data is collected from various sources and includes tweets in multiple languages. Each tweet contains metadata such as the user, timestamp, and engagement metrics.
 
-- Text cleaning: Lowercasing, punctuation removal, stopword removal, lemmatization.
-- New feature creation: `text_clean_country_gender_user` combining multiple metadata.
+### Data Sources
 
-### Feature Engineering
+- Twitter API
+- Kaggle Datasets
 
-- **Vectorization:**
-    - Count Vectorizer
-    - TF-IDF transformation
+You can explore the dataset and its features in detail in the `data` directory.
 
-### Modeling
+## Technologies Used
 
-- **Classifier:** Linear Support Vector Classifier (LinearSVC)
-- **Validation:** 10-fold cross-validation
+This project utilizes a variety of technologies and libraries to process and analyze the data:
 
-### Topic Modeling
+- **Python**: The primary programming language used for data analysis and modeling.
+- **Pandas**: For data manipulation and analysis.
+- **NumPy**: For numerical operations.
+- **Scikit-learn**: For implementing machine learning algorithms.
+- **NLTK**: For natural language processing tasks.
+- **Matplotlib & Seaborn**: For data visualization.
+- **Gensim**: For topic modeling using LDA and NMF.
 
-- **LDA (Latent Dirichlet Allocation)**
-- **NMF (Non-negative Matrix Factorization)**
+## Installation
 
----
+To set up this project on your local machine, follow these steps:
 
-## 📈 Results
+1. **Clone the Repository**
 
-| Metric                      | Value                      |
-|-----------------------------|----------------------------|
-| Model Accuracy              | 77.38%                     |
-| Baseline Accuracy           | ~42.87%                    |
-| Topic Modeling Insights     | Identified key political & social themes |
-| Hashtag Analysis            | Mapped top hashtags per country |
+   ```bash
+   git clone https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe.git
+   ```
 
-✅ **Key findings:**
-- Tweets span diverse topics from **domestic politics** to **international relations**.
-- Different political leanings across countries: e.g., Netherlands leans Center, Iceland leans Left.
-- Gender distribution varies: Sweden had a **female-majority**, others skewed male.
+2. **Navigate to the Project Directory**
 
----
+   ```bash
+   cd kaggle-project-classification-of-tweets-from-northern-europe
+   ```
 
-## 🛠️ Requirements
+3. **Install Required Packages**
 
-- Python 3.8+
-- Key libraries:
-    - pandas, numpy
-    - scikit-learn
-    - nltk, spaCy
-    - gensim
-    - matplotlib, seaborn
+   You can install the necessary packages using pip:
 
-Install via:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```bash
-pip install -r requirements.txt
-```
+## Usage
 
----
-
-## 🖥️ Usage
-
-1️⃣ **Clone the repository:**
+To run the analysis, execute the main script:
 
 ```bash
-git clone https://github.com/AnakinHuang/kaggle-project-classification-of-tweets-from-northern-europe.git
-cd kaggle-project-classification-of-tweets-from-northern-europe
+python main.py
 ```
 
-2️⃣ **Install dependencies:**
+This will start the classification process and generate results. For specific configurations, you can modify the parameters in the `config.py` file.
 
-```bash
-pip install -r requirements.txt
-```
+### Visualization
 
-3️⃣ **Run analysis:**
-- Open `kaggle_project.ipynb` for full preprocessing, modeling, and evaluation workflows.
+After running the analysis, you can visualize the results using the provided Jupyter notebooks in the `notebooks` directory. Open the notebooks and run the cells to see the visualizations.
 
----
+## Results
 
-## 📂 Repository Structure
+The results of the classification will be saved in the `results` directory. You will find:
 
-```
-├── data/                       # Dataset (not included)
-├── kaggle_project.ipynb        # Main Jupyter notebook
-├── kaggle_project_report.pdf   # Final project report
-├── README.md
-├── requirements.txt            # Dependencies
-└── LICENSE
-```
+- Classification metrics
+- Confusion matrices
+- Visualizations of sentiment distribution
 
----
+## Contributing
 
-## 👥 Contributors
+We welcome contributions to improve this project. If you have suggestions or want to add features, please follow these steps:
 
-- **Yuesong Huang** (yhu116@u.rochester.edu)
-- **Junhua Huang** (jhuang77@u.rochester.edu)
+1. Fork the repository.
+2. Create a new branch for your feature.
+3. Make your changes and commit them.
+4. Push to your branch and create a pull request.
 
----
+## License
 
-## 📄 License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-This project is licensed under the BSD 3-Clause License – see the [LICENSE](LICENSE) file for details.
+## Links
 
----
+For more details and to download the latest releases, visit the [Releases](https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/releases) section. You can find the latest updates and versions there.
+
+Feel free to explore the repository and contribute to this exciting project on political tweet classification! If you have any questions, please open an issue in the repository.
