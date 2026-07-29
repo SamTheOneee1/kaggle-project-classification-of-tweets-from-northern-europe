@@ -1,6 +1,4 @@
-# Classification of Tweets from Northern Europe 🌍
-
-![Tweet Analysis](https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip%20Analysis-Classification-blue)
+# Classification of Tweets from Northern Europe
 
 Welcome to the **Classification of Tweets from Northern Europe** repository! This project aims to classify over 500,000 political tweets using Natural Language Processing (NLP) and machine learning techniques. Our goal is to analyze political discourse across Northern Europe and provide insights into public sentiment and trends.
 
@@ -14,7 +12,6 @@ Welcome to the **Classification of Tweets from Northern Europe** repository! Thi
 6. [Results](#results)
 7. [Contributing](#contributing)
 8. [License](#license)
-9. [Links](#links)
 
 ## Project Overview
 
@@ -22,78 +19,54 @@ In recent years, social media has become a crucial platform for political discus
 
 ### Objectives
 
-- Classify tweets based on sentiment and topic.
+- Classify tweets based on political leaning (`Left`, `Center`, `Right`).
 - Use machine learning algorithms to enhance classification accuracy.
 - Visualize the results to present insights effectively.
 
 ## Dataset
 
-The dataset consists of over 500,000 tweets related to political discourse in Northern Europe. The data is collected from various sources and includes tweets in multiple languages. Each tweet contains metadata such as the user, timestamp, and engagement metrics.
-
-### Data Sources
-
-- Twitter API
-- Kaggle Datasets
-
-You can explore the dataset and its features in detail in the `data` directory.
+The dataset consists of political tweets from Northern Europe, split into a training set (`training_data.xlsx`) and a test set (`test_data.xlsx`), expected under a local `northern-europe-datamining/` directory (not included in this repository). Each tweet includes metadata such as `full_text`, `hashtags`, `country_user`, `gender_user`, and `pol_spec_user` (the political-leaning label used as the classification target).
 
 ## Technologies Used
 
 This project utilizes a variety of technologies and libraries to process and analyze the data:
 
 - **Python**: The primary programming language used for data analysis and modeling.
-- **Pandas**: For data manipulation and analysis.
-- **NumPy**: For numerical operations.
-- **Scikit-learn**: For implementing machine learning algorithms.
-- **NLTK**: For natural language processing tasks.
+- **Pandas / NumPy**: For data manipulation and numerical operations.
+- **Scikit-learn**: For feature extraction (TF-IDF, count vectors), topic modeling (NMF, LDA), and classification (LinearSVC).
+- **NLTK**: For stopword removal, POS tagging, and lemmatization.
+- **clean-text** / **langdetect**: For tweet cleaning and language detection.
 - **Matplotlib & Seaborn**: For data visualization.
-- **Gensim**: For topic modeling using LDA and NMF.
 
 ## Installation
 
-To set up this project on your local machine, follow these steps:
-
-1. **Clone the Repository**
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip
-   ```
-
-2. **Navigate to the Project Directory**
-
-   ```bash
+   git clone https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe.git
    cd kaggle-project-classification-of-tweets-from-northern-europe
    ```
 
-3. **Install Required Packages**
-
-   You can install the necessary packages using pip:
+2. Install the required packages (see `CLAUDE.md` for the full list) and launch Jupyter:
 
    ```bash
-   pip install -r https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip
+   pip install pandas numpy scikit-learn nltk matplotlib seaborn clean-text langdetect openpyxl jupyter
+   jupyter notebook kaggle_project.ipynb
    ```
 
 ## Usage
 
-To run the analysis, execute the main script:
-
-```bash
-python https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip
-```
-
-This will start the classification process and generate results. For specific configurations, you can modify the parameters in the `https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip` file.
-
-### Visualization
-
-After running the analysis, you can visualize the results using the provided Jupyter notebooks in the `notebooks` directory. Open the notebooks and run the cells to see the visualizations.
+Place `training_data.xlsx` and `test_data.xlsx` in a `northern-europe-datamining/` directory at the repository root, then run the cells in `kaggle_project.ipynb` in order. See `CLAUDE.md` for a breakdown of the notebook's pipeline stages.
 
 ## Results
 
-The results of the classification will be saved in the `results` directory. You will find:
+Running the notebook produces:
 
-- Classification metrics
-- Confusion matrices
-- Visualizations of sentiment distribution
+- Descriptive statistics and visualizations of tweet/hashtag length, top hashtags by country, and political/gender distributions.
+- Topic modeling output (NMF/LDA) over cleaned tweet text.
+- A trained SVM classifier, its cross-validated accuracy and confusion matrix, and a submission CSV (`submission_north_europe_svc_final.csv`) with predicted political leaning per tweet ID.
+
+A written summary of the analysis is available in `kaggle_project_report.pdf`.
 
 ## Contributing
 
@@ -106,10 +79,4 @@ We welcome contributions to improve this project. If you have suggestions or wan
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Links
-
-For more details and to download the latest releases, visit the [Releases](https://github.com/SamTheOneee1/kaggle-project-classification-of-tweets-from-northern-europe/raw/refs/heads/main/presential/europe-tweets-kaggle-from-northern-of-classification-project-v1.0.zip) section. You can find the latest updates and versions there.
-
-Feel free to explore the repository and contribute to this exciting project on political tweet classification! If you have any questions, please open an issue in the repository.
+This project is licensed under the BSD 3-Clause License. See the `LICENSE` file for details.
