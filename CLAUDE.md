@@ -31,6 +31,7 @@ The training/test data (`training_data.xlsx`, `test_data.xlsx`) is **not include
 6. **Topic modeling** — TF-IDF (for NMF) and raw count (for LDA) vectorizations of `text_clean`, fit with `NMF`/`LatentDirichletAllocation`, visualized via `plot_top_words`. This is exploratory and feeds intuition, not the final classifier.
 7. **Feature assembly for classification** — builds `hashtags_text_clean_country_gender_user`, a single text field per row combining `text_clean`, `country_user`, `gender_user`, and `hashtags`. This combined field, not `text_clean` alone, is what the classifier trains on.
 8. **Classification** — a `Pipeline` of `CountVectorizer(ngram_range=(1,2))` → `TfidfTransformer` → `LinearSVC(max_iter=10000)`, evaluated with 10-fold `cross_val_predict` against `pol_spec_user`, then fit on the full training set and used to predict on `X_test`. Results are visualized via `show_confusion_matrix()` and written to `submission_north_europe_svc.csv` (`ID`, `pol_spec_user`).
+9. **Alternate LLM classifier (optional)** — a zero-shot comparison classifier using a local Ollama model (`OLLAMA_MODEL = 'kimi-k3:cloud'`) prompted per-row on the same `hashtags_text_clean_country_gender_user` field via `classify_pol_spec_with_ollama`. Requires a local Ollama daemon (`ollama serve`) with the model pulled (`ollama pull kimi-k3:cloud`); this is not required to run the rest of the notebook. Generations are cached to `llm_val_predictions.xlsx` / `llm_test_predictions.xlsx` since row-by-row LLM calls are too slow for 10-fold CV, so evaluation uses a single held-out split instead. Predictions are written to `submission_north_europe_llm.csv` (`ID`, `pol_spec_user`) for comparison against the SVM submission.
 
 ## Conventions to preserve
 
@@ -38,6 +39,7 @@ The training/test data (`training_data.xlsx`, `test_data.xlsx`) is **not include
 - Any new/alternate classifier should be trained on the same combined feature (`hashtags_text_clean_country_gender_user`), not raw or cleaned text alone, to stay comparable with the existing SVM baseline.
 - Cache expensive preprocessing (like the parallel lemmatization step) to an `.xlsx` file the way the existing cells do, rather than recomputing it in every run.
 - Submission CSVs must keep the `ID`, `pol_spec_user` column format expected by the Kaggle competition.
+- The Ollama LLM classifier is an optional, separate comparison path — it must not replace or alter the SVM baseline cells, and its own submission file (`submission_north_europe_llm.csv`) must not overwrite `submission_north_europe_svc.csv` / `submission_north_europe_svc_final.csv`.
 
 ## Security note
 
