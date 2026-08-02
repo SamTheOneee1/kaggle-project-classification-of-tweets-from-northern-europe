@@ -9,8 +9,9 @@ This is a Kaggle data science project (not a software application/service): a si
 Repository contents:
 - `kaggle_project.ipynb` — the entire pipeline: data loading, EDA, text cleaning/lemmatization, topic modeling, and classification.
 - `kaggle_project_report.pdf` — a written report summarizing the analysis and results.
-- `submission_north_europe_svc_final.csv` — the final Kaggle submission (`ID`, `pol_spec_user` predictions from the SVM model).
-- `README.md` — project overview.
+- `submission_north_europe_svc_final.csv` — the final Kaggle submission (`ID`, `pol_spec_user` predictions from the SVM model), committed separately from the notebook's own output file (see pipeline step 8).
+- `README.md` — project overview, installation, and usage instructions (a shorter, user-facing companion to this file).
+- `LICENSE` — BSD 3-Clause license.
 
 The training/test data (`training_data.xlsx`, `test_data.xlsx`) is **not included** in the repo. The notebook expects them at `./northern-europe-datamining/training_data.xlsx` and `./northern-europe-datamining/test_data.xlsx` relative to the notebook, so that directory must be created and populated before the notebook can run end-to-end.
 
@@ -28,9 +29,9 @@ The training/test data (`training_data.xlsx`, `test_data.xlsx`) is **not include
 3. **`decode_full_text`** — the raw `full_text` column is stored as a Python bytes-literal string (e.g. `b'...'`); this decodes it back to a normal UTF-8 string via `eval(...).decode('utf-8')`. This is a quirk of how the source dataset was exported — expect it whenever touching `full_text`.
 4. **Exploratory analysis** — tweet/hashtag length stats, top hashtags per `country_user` (pie charts), and political-view/gender distribution by country (stacked bar charts).
 5. **Text cleaning & lemmatization** (`tweet_cleaner`, `lemmatize_tweet`) — lowercases, strips retweet prefixes and URLs, detects tweet language via `langdetect` to pick the right NLTK stopword list, removes short words/stopwords, strips emoji/punctuation via `cleantext`, then POS-tags and lemmatizes with `WordNetLemmatizer`. Applied to both train and test sets in parallel via `multiprocessing.Pool(cpu_count())`, writing results to `text_clean`; cleaned frames are cached to `training_data_cleaned.xlsx` / `test_data_cleaned.xlsx` so this expensive step doesn't need to be rerun.
-6. **Topic modeling** — TF-IDF (for NMF) and raw count (for LDA) vectorizations of `text_clean`, fit with `NMF`/`LatentDirichletAllocation`, visualized via `plot_top_words`. This is exploratory and feeds intuition, not the final classifier.
+6. **Topic modeling** — TF-IDF (for `NMF`/`MiniBatchNMF`) and raw count (for `LatentDirichletAllocation`) vectorizations of `text_clean`, visualized via `plot_top_words`. This is exploratory and feeds intuition, not the final classifier.
 7. **Feature assembly for classification** — builds `hashtags_text_clean_country_gender_user`, a single text field per row combining `text_clean`, `country_user`, `gender_user`, and `hashtags`. This combined field, not `text_clean` alone, is what the classifier trains on.
-8. **Classification** — a `Pipeline` of `CountVectorizer(ngram_range=(1,2))` → `TfidfTransformer` → `LinearSVC(max_iter=10000)`, evaluated with 10-fold `cross_val_predict` against `pol_spec_user`, then fit on the full training set and used to predict on `X_test`. Results are visualized via `show_confusion_matrix()` and written to `submission_north_europe_svc.csv` (`ID`, `pol_spec_user`).
+8. **Classification** — a `Pipeline` of `CountVectorizer(ngram_range=(1,2))` → `TfidfTransformer` → `LinearSVC(max_iter=10000)`, evaluated with 10-fold `cross_val_predict` against `pol_spec_user`, then fit on the full training set and used to predict on `X_test`. Results are visualized via `show_confusion_matrix()` and written to `submission_north_europe_svc.csv` (`ID`, `pol_spec_user`) — note this is a different filename than the `submission_north_europe_svc_final.csv` already committed at the repo root; re-running the notebook does not overwrite the final submission.
 
 ## Conventions to preserve
 
